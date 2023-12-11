@@ -70,6 +70,62 @@ double Expression::calc(const map<char, double>& values) {
 	double leftop, rightop;
 	for (char lexem : postfix)
 	{
+		switch (lexem) {
+			{case '+':
+				rightop = st.top();
+				st.pop();
+				leftop = st.top();
+				st.pop();
+				st.push(rightop + leftop);
+				break;
+			}
+			{case '-':
+				rightop = st.top();
+				st.pop();
+				leftop = st.top();
+				st.pop();
+				st.push(rightop - leftop);
+				break;
+			}
+			{case '*':
+				rightop = st.top();
+				st.pop();
+				leftop = st.top();
+				st.pop();
+				st.push(rightop * leftop);
+				break;
+			}
+			{case '/':
+				rightop = st.top();
+				st.pop();
+				leftop = st.top();
+				if (leftop == 0) throw("div 0");
+				st.pop();
+				st.push(rightop / leftop);
+				break;
+			}
+		default:
+			st.push(operands[lexem]);
 
+		}
 	}
+	double res = st.top();
+	st.pop();
+	return res;
+}
+bool Expression::iscorrect(string inf) {
+	bool res = true;
+	for (char e : inf) {
+		int leftb = 0;
+		int rightb = 0;
+		if (e == '(')
+			leftb++;
+		if (e == ')')
+			rightb++;
+		if (leftb != rightb)
+			res = false;
+		cout << "bracers is not correct" << endl;
+	}
+	
+	
 }

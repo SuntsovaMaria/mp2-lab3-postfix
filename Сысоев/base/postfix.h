@@ -28,6 +28,7 @@ public:
 	}
 	vector<char> GetOperands() const;
 	double calc(const map<char, double>& val);
+	bool iscorrect(string inf);
 };
 
 #endif
