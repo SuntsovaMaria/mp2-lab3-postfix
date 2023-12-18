@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include<exception>
 
 template<typename T>
 class TStack {
@@ -48,14 +49,14 @@ public:
             return res;
         }
         else {
-            throw ("Stack is empty");
+            throw std::exception("Stack is empty");
         }
     }
 
 
     void pop() {
         if (isEmpty()) {
-            throw ("stack is empty");
+            throw std::exception("stack is empty");
         }
         topid--;
     }

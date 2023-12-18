@@ -20,15 +20,17 @@ class Expression {
 	void toPostfix();
 public:
 	Expression(string inf);
+	Expression() : infix(""), postfix("") {};
 	string GetInfix()const {
 		return infix;
 	}
 	string GetPostfix()const {
 		return postfix;
 	}
-	vector<char> GetOperands() const;
-	double calc(const map<char, double>& val);
-	bool iscorrect(string inf);
+	double calc();
+	bool iscorrect();
+	void minus();
+	
 };
 
 #endif
